@@ -1,8 +1,8 @@
 package com.example.xappo.di
 
 import com.example.xappo.repository.GithubRepository
-import com.example.xappo.ui.MainContract
-import com.example.xappo.ui.MainPresenter
+import com.example.xappo.ui.main.MainContract
+import com.example.xappo.ui.main.MainPresenter
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

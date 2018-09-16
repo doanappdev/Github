@@ -1,4 +1,4 @@
-package com.example.xappo.ui.adapter
+package com.example.xappo.ui.main.adapter
 
 import android.support.v4.app.FragmentManager
 import android.support.v4.util.SparseArrayCompat
@@ -13,6 +13,8 @@ class GithubAdapter(private val viewItems: List<BaseItemView>) : RecyclerView.Ad
     private var delegateAdapters = SparseArrayCompat<BaseDelegateAdapter>()
 
     init {
+        // Note: this is an example of using the delegate pattern to display
+        //       multiple item view types in recycler view
         delegateAdapters.put(ITEM_INFO, InfoDelegateAdapter())
 //        delegateAdapters.put(ITEM_TITLE, TitleDelegateAdapter())
 //        delegateAdapters.put(ITEM_SUPPORT, SupportRequestDelegateAdapter())

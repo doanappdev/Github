@@ -1,17 +1,15 @@
-package com.example.xappo.ui
+package com.example.xappo.ui.main
 
-import android.support.v7.view.menu.MenuView
 import com.example.xappo.base.BaseItemView
 import com.example.xappo.model.InfoItem
 import com.example.xappo.repository.GithubRepository
+import io.reactivex.rxkotlin.merge
 import org.jetbrains.anko.error
 import org.jetbrains.anko.info
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor(val repository: GithubRepository) : MainContract.Presenter {
-    override fun getRepoResults() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
 
     override lateinit var view: MainContract.View
 
@@ -20,6 +18,9 @@ class MainPresenter @Inject constructor(val repository: GithubRepository) : Main
     }
 
     override fun subscribe() {
+    }
+
+    override fun getRepoResults() {
         repository.getGithubRepository().subscribe ({
             info { "$it" }
             val viewItems = mutableListOf<BaseItemView>()
@@ -34,4 +35,6 @@ class MainPresenter @Inject constructor(val repository: GithubRepository) : Main
             error { "Error fetching data : ${it.message}" }
         })
     }
+
+
 }

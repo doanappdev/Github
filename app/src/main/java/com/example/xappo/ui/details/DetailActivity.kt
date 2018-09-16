@@ -1,46 +1,24 @@
-package com.example.xappo.ui.main
+package com.example.xappo.ui.details
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.xappo.R
-import com.example.xappo.XappoApp
-import com.example.xappo.base.BaseItemView
-import com.example.xappo.model.InfoItem
-import com.example.xappo.ui.main.adapter.MainContract
-import com.example.xappo.ui.MainPresenter
-import com.example.xappo.ui.adapter.GithubAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.toast
-import javax.inject.Inject
+import com.example.xappo.base.loadAvatar
+import com.example.xappo.model.Item
+import kotlinx.android.synthetic.main.activity_detail.*
 
-class MainActivity : AppCompatActivity(), MainContract.View {
+const val KEY_ITEM = "key_item"
 
-    @Inject lateinit var presenter: MainPresenter
+class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        XappoApp.appComponent.inject(this)
-        presenter.attach(this)
-        presenter.subscribe()
-    }
+        setContentView(R.layout.activity_detail)
 
-    override fun showProgressBar() {
-       // call this to show progress bar
-    }
-
-    override fun hideProgressBar() {
-        // call this to hide progress bar
-    }
-
-    override fun setAdapter(viewItems: List<BaseItemView>) {
-        recyclerView.apply {
-            adapter = GithubAdapter(viewItems)
+        intent?.extras?.getParcelable<Item>(KEY_ITEM)?.let {item ->
+            item.owner.avatarUrl?.let { url -> avatar.loadAvatar(url) }
+            item.owner.login?.let { ownerLogin -> login.text = ownerLogin }
+            item.description?.let { desc -> description.text = desc }
         }
-    }
-
-    override fun navigateToDetails(item: InfoItem) {
-        toast("Display details activity")
-        //val intent = Intent(this, )
     }
 }

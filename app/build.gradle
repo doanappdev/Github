@@ -22,6 +22,10 @@ android {
     kapt {
         generateStubs = true
     }
+    androidExtensions {
+        // add kotlin @Parcelize
+        experimental = true
+    }
 }
 
 dependencies {

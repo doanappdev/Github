@@ -1,12 +1,12 @@
-package com.example.xappo.ui
+package com.example.xappo.ui.main
+
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.xappo.R
 import com.example.xappo.XappoApp
 import com.example.xappo.base.BaseItemView
-import com.example.xappo.model.RepoResult
-import com.example.xappo.ui.adapter.GithubAdapter
+import com.example.xappo.ui.main.adapter.GithubAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setContentView(R.layout.activity_main)
         XappoApp.appComponent.inject(this)
         presenter.attach(this)
+        presenter.getRepoResults()
         presenter.subscribe()
     }
 

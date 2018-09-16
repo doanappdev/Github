@@ -1,6 +1,6 @@
 package com.example.xappo.di
 
-import com.example.xappo.ui.MainActivity
+import com.example.xappo.ui.main.MainActivity
 import com.example.xappo.XappoApp
 import dagger.BindsInstance
 import dagger.Component
