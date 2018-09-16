@@ -9,6 +9,6 @@ This example using the :
     4. Retrofit
     5. Glide
     6. MVP architecture
-    7. Repository layer.
+    7. Repository layer
     
-    
+Clicking on list item will display a detail view of the item.
